@@ -2,14 +2,16 @@
 
 # Terminal - Guake
 1. Install Guake
+    - Fedora 40: sudo yum install guake -y
+    - EL7/8/9: sudo yum install guake -y
 2. Set up Super-D Keybind
-  - X: Use the preferences Key Bindings tab
-  - Wayland-Gnone: Settings > Keyboard > Key Bindings > Custom > Add... Super-D to ```guake-toggle```
+    - X: Use the preferences Key Bindings tab
+    - Wayland-Gnome: Settings > Keyboard > Key Bindings > Custom > Add... Super-D to ```guake-toggle```
 3. Other settings
-  - General > Start Guake at Login (ON)
-  - Main Window > Hide on Lose Focus (OFF)
-  - Main Window > Height (100%)
-  - Appearance > Font (Fira Code Medium)
+    - General > Start Guake at Login (ON)
+    - Main Window > Hide on Lose Focus (OFF)
+    - Main Window > Height (100%)
+    - Appearance > Font (Fira Code Medium)
 
 # Prompt - Powerline w/ K8s Support
 1. Install conda

@@ -73,3 +73,8 @@ powerline-daemon --replace --foreground
 
 https://github.com/so0k/powerline-kubernetes
 https://stackoverflow.com/questions/58482081/configure-powerline-to-display-git-status
+
+
+# Remote Desktop - Remmina
+1. Install Remmina AND the RDP Auth plugin (supports MS accounts)
+```sudo yum install remmina remmina-plugins-rdp```

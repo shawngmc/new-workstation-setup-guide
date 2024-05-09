@@ -81,3 +81,8 @@ https://stackoverflow.com/questions/58482081/configure-powerline-to-display-git-
 2. When setting up the connection to a personal dekstop:
    - Choose a domain of MicrosoftAccount
    - Choose a resolution of 1920x1080; after connecting, enable Dynamic Resolution
+
+
+# VSCode
+1. Install VSCode
+2. Apply the settings.json in this repo by copying to ~/.config/Code/User/settings.json; note that the comments are OK, as VSCode technically uses JSONC :)

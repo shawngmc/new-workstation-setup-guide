@@ -78,4 +78,6 @@ https://stackoverflow.com/questions/58482081/configure-powerline-to-display-git-
 # Remote Desktop - Remmina
 1. Install Remmina AND the RDP Auth plugin (supports MS accounts)
 ```sudo yum install remmina remmina-plugins-rdp```
-2. When setting up the connection, choose a domain of MicrosoftAccount.
+2. When setting up the connection to a personal dekstop:
+   - Choose a domain of MicrosoftAccount
+   - Choose a resolution of 1920x1080; after connecting, enable Dynamic Resolution

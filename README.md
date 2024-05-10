@@ -1,9 +1,17 @@
 # new-workstation-setup-guide
 
+# Font - Roboto Mono for Powerline
+Using the [CodingFont Tournament Bracket](https://www.codingfont.com/), I found I like Roboto Mono: More readable, slashed zeroes, sans-serif, good contrast
+1. Install roboto mono
+    - Fedora 40: ```sudo yum install powerline-fonts -y```
+    - EL7/8/9: ```sudo yum install powerline-fonts -y```
+    - Debian/Ubuntu/etc.: ```sudo apt-get install fonts-powerline -y```
+
 # Terminal - Guake
 1. Install Guake
-    - Fedora 40: sudo yum install guake -y
-    - EL7/8/9: sudo yum install guake -y
+    - Fedora 40: ```sudo yum install guake -y```
+    - EL7/8/9: ```sudo yum install guake -y```
+    - Debian/Ubuntu/etc.: ```sudo apt-get install guake -y```
 2. Set up Super-D Keybind
     - X: Use the preferences Key Bindings tab
     - Wayland-Gnome: Settings > Keyboard > Key Bindings > Custom > Add... Super-D to ```guake-toggle```
@@ -81,7 +89,6 @@ https://stackoverflow.com/questions/58482081/configure-powerline-to-display-git-
 2. When setting up the connection to a personal dekstop:
    - Choose a domain of MicrosoftAccount
    - Choose a resolution of 1920x1080; after connecting, enable Dynamic Resolution
-
 
 # VSCode
 1. Install VSCode

@@ -2,10 +2,18 @@
 
 # Font - Roboto Mono for Powerline
 Using the [CodingFont Tournament Bracket](https://www.codingfont.com/), I found I like Roboto Mono: More readable, slashed zeroes, sans-serif, good contrast
-1. Install roboto mono
+1. Install the powerline fonts shim, which alone makes powerline always render properly
     - Fedora 40: ```sudo yum install powerline-fonts -y```
     - EL7/8/9: ```sudo yum install powerline-fonts -y```
     - Debian/Ubuntu/etc.: ```sudo apt-get install fonts-powerline -y```
+2. Install the patched powerline fonts, since I like a couple specific options
+```
+clone git clone https://github.com/powerline/fonts.git --depth=1
+cd fonts
+./install.sh
+cd ..
+rm -rf fonts
+```
 
 # Terminal - Guake
 1. Install Guake

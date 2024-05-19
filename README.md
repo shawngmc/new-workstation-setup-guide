@@ -90,6 +90,26 @@ powerline-daemon --replace --foreground
 https://github.com/so0k/powerline-kubernetes
 https://stackoverflow.com/questions/58482081/configure-powerline-to-display-git-status
 
+# CLI Copy/Paste
+## If on XOrg or Wayland w/XWayland (test via ```xlsclients -l```; this might need installed!)
+1. Install Xsel: ```sudo yum install xsel -y```
+2. Add the following aliases:
+```
+touch ~/.bash_aliases
+echo "alias pbcopy='xsel --input --clipboard'" >> ~/.bash_aliases
+echo "alias pbpaste='xsel --output --clipboard'" >> ~/.bash_aliases
+```
+3. After loading aliases, use the following commands format:
+```
+# To copy, pipe in:
+echo "Hi!" | pbcopy
+# To paste to a file:
+pbpaste > file.txt
+```
+
+## If on Wayland w/o Xwayland
+The [wl-clipboard](https://github.com/bugaevc/wl-clipboard) package is roughly equivalent.
+
 
 # Remote Desktop - Remmina
 1. Install Remmina AND the RDP Auth plugin (supports MS accounts)

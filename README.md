@@ -110,10 +110,25 @@ pbpaste > file.txt
 ## If on Wayland w/o Xwayland
 The [wl-clipboard](https://github.com/bugaevc/wl-clipboard) package is roughly equivalent.
 
+# CLI Data Fetcher - Fastfetch
+1. Install Fastfetch: ```sudo yum install -y fastfetch```
+2. Add to ~/.bashrc
+```
+# Run fastfetch if present
+FASTFETCH_PATH=$(which fastfetch)
+if [ $? -eq 0 ]; then
+  fastfetch
+fi
+```
+3. Generate a config file with a few less enabled modules:
+```
+fastfetch --structure Title:Separator:OS:Host:Kernel:Uptime:Packages:Shell:Display:DE:WM:Terminal:TerminalFont:CPU:GPU:Memory:Swap:Disk:LocalIp:Battery:PowerAdapter:Locale:Break:Colors --gen-config
+```
+
 
 # Remote Desktop - Remmina
 1. Install Remmina AND the RDP Auth plugin (supports MS accounts)
-```sudo yum install remmina remmina-plugins-rdp```
+```sudo yum install -y remmina remmina-plugins-rdp```
 2. When setting up the connection to a personal dekstop:
    - Choose a domain of MicrosoftAccount
    - Choose a resolution of 1920x1080; after connecting, enable Dynamic Resolution

@@ -37,7 +37,7 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/
 bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
 rm -rf ~/miniconda3/miniconda.sh
 ```
-2. Init the conda system for bash ```~/miniconda3/bin/conda init bashs```
+2. Init the conda system for bash ```~/miniconda3/bin/conda init bash```
 3. activate conda env - using 'default' here
 4. python3 -m pip install powerline-status powerline-kubernetes
 5. in ~/.bashrc

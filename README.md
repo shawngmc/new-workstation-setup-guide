@@ -8,7 +8,7 @@ Using the [CodingFont Tournament Bracket](https://www.codingfont.com/), I found 
     - Debian/Ubuntu/etc.: ```sudo apt-get install fonts-powerline -y```
 2. Install the patched powerline fonts, since I like a couple specific options
 ```
-clone git clone https://github.com/powerline/fonts.git --depth=1
+git clone https://github.com/powerline/fonts.git --depth=1
 cd fonts
 ./install.sh
 cd ..
@@ -31,9 +31,16 @@ rm -rf fonts
 
 # Prompt - Powerline w/ K8s Support
 1. Install conda
-2. activate conda env - using 'default' here
-3. python3 -m pip install powerline-status powerline-kubernetes
-4. in ~/.bashrc
+```
+mkdir -p ~/miniconda3
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+rm -rf ~/miniconda3/miniconda.sh
+```
+2. Init the conda system for bash ```~/miniconda3/bin/conda init bashs```
+3. activate conda env - using 'default' here
+4. python3 -m pip install powerline-status powerline-kubernetes
+5. in ~/.bashrc
 ```conda activate default
 POWERLINE_PATH=$(python3 -m pip show powerline-status | grep "Location:" | sed "s/:Location: //")/powerline
 if [ -f ${POWERLINE_PATH}/bindings/bash/powerline.sh ]; then
@@ -44,7 +51,7 @@ if [ -f ${POWERLINE_PATH}/bindings/bash/powerline.sh ]; then
   source ${POWERLINE_PATH}/bindings/bash/powerline.sh
 fi
 ```
-5. Copy the default configs to homedir
+6 Copy the default configs to homedir
 ```
 mkdir -pv ~/.config/powerline/colorschemes  
 mkdir -pv ~/.config/powerline/themes/shell
@@ -53,7 +60,7 @@ cp ${POWERLINE_PATH}/config_files/colorschemes/default.json ~/.config/powerline/
 cp ${POWERLINE_PATH}/config_files/colorschemes/solarized.json ~/.config/powerline/colorschemes/
 cp ${POWERLINE_PATH}/config_files/themes/shell/default.json ~/.config/powerline/themes/shell/
 ```
-6. Add to the groups block in ~/.config/powerline/themes/shell/default.json
+7. Add to the groups block in ~/.config/powerline/themes/shell/default.json
 ```
     "kubernetes_cluster":         { "fg": "gray10", "bg": "darkestblue", "attrs": [] },
     "kubernetes_cluster:alert":   { "fg": "gray10", "bg": "darkestred",  "attrs": [] },
@@ -61,7 +68,7 @@ cp ${POWERLINE_PATH}/config_files/themes/shell/default.json ~/.config/powerline/
     "kubernetes_namespace:alert": { "fg": "gray10", "bg": "darkred",     "attrs": [] },
     "kubernetes:divider":         { "fg": "gray4",  "bg": "darkestblue", "attrs": [] },
 ```
-7. Add to the left segments in ~/.config/powerline/colorschemes/default.json
+8. Add to the left segments in ~/.config/powerline/colorschemes/default.json
 ```
 {
     "function": "powerline_kubernetes.kubernetes",
@@ -78,7 +85,7 @@ cp ${POWERLINE_PATH}/config_files/themes/shell/default.json ~/.config/powerline/
     }
 }
 ```
-8. Restart the daemon
+9. Restart the daemon
 ```
 powerline-daemon --replace
 ```

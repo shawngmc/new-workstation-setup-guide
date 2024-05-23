@@ -27,7 +27,7 @@ rm -rf fonts
     - General > Start Guake at Login (ON)
     - Main Window > Hide on Lose Focus (OFF)
     - Main Window > Height (100%)
-    - Appearance > Font (Fira Code Medium)
+    - Appearance > Font (Roboto Mono for Powerline)
 
 # Prompt - Powerline w/ K8s Support
 1. Install conda

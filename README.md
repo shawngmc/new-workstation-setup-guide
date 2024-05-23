@@ -3,8 +3,7 @@
 # Font - Roboto Mono for Powerline
 Using the [CodingFont Tournament Bracket](https://www.codingfont.com/), I found I like Roboto Mono: More readable, slashed zeroes, sans-serif, good contrast
 1. Install the powerline fonts shim, which alone makes powerline always render properly
-    - Fedora 40: ```sudo yum install powerline-fonts -y```
-    - EL7/8/9: ```sudo yum install powerline-fonts -y```
+    - Fedora 40/EL8/EL9: ```sudo dnf install powerline-fonts -y```
     - Debian/Ubuntu/etc.: ```sudo apt-get install fonts-powerline -y```
 2. Install the patched powerline fonts, since I like a couple specific options
 ```
@@ -17,8 +16,7 @@ rm -rf fonts
 
 # Terminal - Guake
 1. Install Guake
-    - Fedora 40: ```sudo yum install guake -y```
-    - EL7/8/9: ```sudo yum install guake -y```
+    - Fedora 40/EL8/EL9: ```sudo dnf install guake -y```
     - Debian/Ubuntu/etc.: ```sudo apt-get install guake -y```
 2. Set up Super-D Keybind
     - X: Use the preferences Key Bindings tab
@@ -61,17 +59,22 @@ cp ${POWERLINE_PATH}/config_files/colorschemes/default.json ~/.config/powerline/
 cp ${POWERLINE_PATH}/config_files/colorschemes/solarized.json ~/.config/powerline/colorschemes/
 cp ${POWERLINE_PATH}/config_files/themes/shell/default.json ~/.config/powerline/themes/shell/
 ```
-7. Add to the left block in ~/.config/powerline/colorschemes/default.json
+7. Add k8s to the groups block in ~/.config/powerline/colorschemes/default.json
 ```
-    "kubernetes_cluster":         { "fg": "gray10", "bg": "darkestblue", "attrs": [] },
-    "kubernetes_cluster:alert":   { "fg": "gray10", "bg": "darkestred",  "attrs": [] },
-    "kubernetes_namespace":       { "fg": "gray10", "bg": "darkestblue", "attrs": [] },
-    "kubernetes_namespace:alert": { "fg": "gray10", "bg": "darkred",     "attrs": [] },
-    "kubernetes:divider":         { "fg": "gray4",  "bg": "darkestblue", "attrs": [] },
+jq '.groups += {"kubernetes_cluster": { "fg": "gray10", "bg": "darkestblue",  "attrs": [] }}' ~/.config/powerline/colorschemes/default.json > ~/.config/powerline/colorschemes/default.json.tmp
+mv ~/.config/powerline/colorschemes/default.json.tmp ~/.config/powerline/colorschemes/default.json
+jq '.groups += {"kubernetes_cluster:alert": { "fg": "gray10", "bg": "darkestred",  "attrs": [] }}' ~/.config/powerline/colorschemes/default.json > ~/.config/powerline/colorschemes/default.json.tmp
+mv ~/.config/powerline/colorschemes/default.json.tmp ~/.config/powerline/colorschemes/default.json
+jq '.groups += {"kubernetes_namespace": { "fg": "gray10", "bg": "darkestblue", "attrs": [] }}' ~/.config/powerline/colorschemes/default.json > ~/.config/powerline/colorschemes/default.json.tmp
+mv ~/.config/powerline/colorschemes/default.json.tmp ~/.config/powerline/colorschemes/default.json
+jq '.groups += {"kubernetes_namespace:alert": { "fg": "gray10", "bg": "darkred",     "attrs": [] }}' ~/.config/powerline/colorschemes/default.json > ~/.config/powerline/colorschemes/default.json.tmp
+mv ~/.config/powerline/colorschemes/default.json.tmp ~/.config/powerline/colorschemes/default.json
+jq '.groups += {"kubernetes:divider": { "fg": "gray4",  "bg": "darkestblue", "attrs": [] }}' ~/.config/powerline/colorschemes/default.json > ~/.config/powerline/colorschemes/default.json.tmp
+mv ~/.config/powerline/colorschemes/default.json.tmp ~/.config/powerline/colorschemes/default.json
 ```
-8. Add to the groups segments in ~/.config/powerline/themes/shell/default.json
+8. Add k8s to the left segments in ~/.config/powerline/themes/shell/default.json
 ```
-{
+jq '.segments.left[.segments.left| length] |= . + {
     "function": "powerline_kubernetes.kubernetes",
     "priority": 30,
     "args": {
@@ -84,7 +87,8 @@ cp ${POWERLINE_PATH}/config_files/themes/shell/default.json ~/.config/powerline/
           "cluster:live"
         ]
     }
-}
+}' ~/.config/powerline/themes/shell/default.json > ~/.config/powerline/themes/shell/default.json.tmp
+mv ~/.config/powerline/themes/shell/default.json.tmp ~/.config/powerline/themes/shell/default.json
 ```
 9. Restart the daemon
 ```
@@ -99,8 +103,11 @@ https://github.com/so0k/powerline-kubernetes
 https://stackoverflow.com/questions/58482081/configure-powerline-to-display-git-status
 
 # CLI Copy/Paste
-## If on XOrg or Wayland w/XWayland (test via ```xlsclients -l```; this might need installed!)
-1. Install Xsel: ```sudo yum install xsel -y```
+## Prereq - check desktop
+1. Install xlsclients: ```sudo dnf install xlsclients -y```
+2. Check desktop: ```xlsclients -l```
+## If on XOrg or Wayland w/XWayland
+1. Install Xsel: ```sudo dnf install xsel -y```
 2. Add the pbcopy and pbpaste aliases:
 Fedora:
 ```
@@ -126,7 +133,7 @@ pbpaste > file.txt
 The [wl-clipboard](https://github.com/bugaevc/wl-clipboard) package is roughly equivalent.
 
 # CLI Data Fetcher - Fastfetch
-1. Install Fastfetch: ```sudo yum install -y fastfetch```
+1. Install Fastfetch: ```sudo dnf install -y fastfetch```
 2. Add to ~/.bashrc
 ```
 # Run fastfetch if present
@@ -143,11 +150,20 @@ fastfetch --structure Title:Separator:OS:Host:Kernel:Uptime:Packages:Shell:Displ
 
 # Remote Desktop - Remmina
 1. Install Remmina AND the RDP Auth plugin (supports MS accounts)
-```sudo yum install -y remmina remmina-plugins-rdp```
+```sudo dnf install -y remmina remmina-plugins-rdp```
 2. When setting up the connection to a personal dekstop:
    - Choose a domain of MicrosoftAccount
    - Choose a resolution of 1920x1080; after connecting, enable Dynamic Resolution
 
 # VSCode
-1. Install VSCode
-2. Apply the settings.json in this repo by copying to ~/.config/Code/User/settings.json; note that the comments are OK, as VSCode technically uses JSONC :)
+1. Add the official VSCode Repo and Key:
+```
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+```
+2. Install VSCode as a native app:
+```
+sudo dnf check-update
+sudo dnf install code -y
+```
+3. Apply the settings.json in this repo by copying to ~/.config/Code/User/settings.json; note that the comments are OK, as VSCode technically uses JSONC :)

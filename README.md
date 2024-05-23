@@ -43,7 +43,7 @@ rm -rf ~/miniconda3/miniconda.sh
 5. Update ~/.bashrc
 ```
 conda activate base
-POWERLINE_PATH=$(python3 -m pip show powerline-status | grep "Location:" | sed "s/:Location: //")/powerline
+POWERLINE_PATH=$(python3 -m pip show powerline-status | grep "Location:" | sed "s/Location: //")/powerline
 if [ -f ${POWERLINE_PATH}/bindings/bash/powerline.sh ]; then
   powerline-daemon -q
   POWERLINE_BASH_CONTINUATION=1
@@ -61,7 +61,7 @@ cp ${POWERLINE_PATH}/config_files/colorschemes/default.json ~/.config/powerline/
 cp ${POWERLINE_PATH}/config_files/colorschemes/solarized.json ~/.config/powerline/colorschemes/
 cp ${POWERLINE_PATH}/config_files/themes/shell/default.json ~/.config/powerline/themes/shell/
 ```
-7. Add to the groups block in ~/.config/powerline/themes/shell/default.json
+7. Add to the left block in ~/.config/powerline/colorschemes/default.json
 ```
     "kubernetes_cluster":         { "fg": "gray10", "bg": "darkestblue", "attrs": [] },
     "kubernetes_cluster:alert":   { "fg": "gray10", "bg": "darkestred",  "attrs": [] },
@@ -69,7 +69,7 @@ cp ${POWERLINE_PATH}/config_files/themes/shell/default.json ~/.config/powerline/
     "kubernetes_namespace:alert": { "fg": "gray10", "bg": "darkred",     "attrs": [] },
     "kubernetes:divider":         { "fg": "gray4",  "bg": "darkestblue", "attrs": [] },
 ```
-8. Add to the left segments in ~/.config/powerline/colorschemes/default.json
+8. Add to the groups segments in ~/.config/powerline/themes/shell/default.json
 ```
 {
     "function": "powerline_kubernetes.kubernetes",
@@ -78,7 +78,7 @@ cp ${POWERLINE_PATH}/config_files/themes/shell/default.json ~/.config/powerline/
         "show_kube_logo": true, // set to false to omit the Kube logo
         "show_cluster": true, // show cluster name
         "show_namespace": true, // show namespace name
-        "show_default_namespace": false, // do not show namespace name if it's "default"
+        "show_default_namespace": false, // do not show namespace name if it's default
         "alerts": [
           "live", // show line in different color when namespace matches
           "cluster:live"  // show line in different color when cluster name and namespace match

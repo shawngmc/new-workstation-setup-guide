@@ -101,13 +101,20 @@ https://stackoverflow.com/questions/58482081/configure-powerline-to-display-git-
 # CLI Copy/Paste
 ## If on XOrg or Wayland w/XWayland (test via ```xlsclients -l```; this might need installed!)
 1. Install Xsel: ```sudo yum install xsel -y```
-2. Add the following aliases (currently using the debian location - Fedora uses ~/.bashrc.d/ANY_FILE_NAME:
+2. Add the pbcopy and pbpaste aliases:
+Fedora:
+```
+mkdir -p ~/.bashrc.d && touch ~/.bashrc.d/aliases
+echo "alias pbcopy='xsel --input --clipboard'" >> ~/.bashrc.d/aliases
+echo "alias pbpaste='xsel --output --clipboard'" >> ~/.bashrc.d/aliases
+```
+Debian:
 ```
 touch ~/.bash_aliases
 echo "alias pbcopy='xsel --input --clipboard'" >> ~/.bash_aliases
 echo "alias pbpaste='xsel --output --clipboard'" >> ~/.bash_aliases
 ```
-3. After loading aliases, use the following commands format:
+3. After loading aliases (new terminal, etc.), use the following commands format:
 ```
 # To copy, pipe in:
 echo "Hi!" | pbcopy

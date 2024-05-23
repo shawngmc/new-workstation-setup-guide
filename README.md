@@ -38,10 +38,11 @@ bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
 rm -rf ~/miniconda3/miniconda.sh
 ```
 2. Init the conda system for bash ```~/miniconda3/bin/conda init bash```
-3. activate conda env - using 'default' here
-4. python3 -m pip install powerline-status powerline-kubernetes
-5. in ~/.bashrc
-```conda activate default
+3. activate conda env ```conda activate base```
+4. Install powerlin: ```python3 -m pip install powerline-status powerline-kubernetes```
+5. Update ~/.bashrc
+```
+conda activate base
 POWERLINE_PATH=$(python3 -m pip show powerline-status | grep "Location:" | sed "s/:Location: //")/powerline
 if [ -f ${POWERLINE_PATH}/bindings/bash/powerline.sh ]; then
   powerline-daemon -q

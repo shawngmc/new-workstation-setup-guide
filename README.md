@@ -1,10 +1,10 @@
 # new-workstation-setup-guide
 
-# Font - Roboto Mono for Powerline
-Using the [CodingFont Tournament Bracket](https://www.codingfont.com/), I found I like Roboto Mono: More readable, slashed zeroes, sans-serif, good contrast
+# Font - Roboto Mono for Powerline and Fira Code Medium
+Using the [CodingFont Tournament Bracket](https://www.codingfont.com/), I found I like Roboto Mono: More readable, slashed zeroes, sans-serif, good contrast. But unfortunately, that's not Bitmap, so it doesn't work with KiTTY. Add Fira Code for it.
 1. Install the powerline fonts shim, which alone makes powerline always render properly
-    - Fedora 40/EL8/EL9: ```sudo dnf install powerline-fonts -y```
-    - Debian/Ubuntu/etc.: ```sudo apt-get install fonts-powerline -y```
+    - Fedora 40/EL8/EL9: ```sudo dnf install powerline-fonts fira-code-fonts -y```
+    - Debian/Ubuntu/etc.: ```sudo apt-get install fonts-powerline fonts-firacode -y```
 2. Install the patched powerline fonts, since I like a couple specific options
 ```
 git clone https://github.com/powerline/fonts.git --depth=1

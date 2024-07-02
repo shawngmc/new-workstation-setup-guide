@@ -1,11 +1,17 @@
 # new-workstation-setup-guide
 
-# Font - Roboto Mono for Powerline and Fira Code Medium
-Using the [CodingFont Tournament Bracket](https://www.codingfont.com/), I found I like Roboto Mono: More readable, slashed zeroes, sans-serif, good contrast. But unfortunately, it's bitmap, so it doesn't work with KiTTY. Add Fira Code for it?
+# Font - Roboto Mono and Symbols Nerd Font
+Using the [CodingFont Tournament Bracket](https://www.codingfont.com/), I found I like Roboto Mono: More readable, slashed zeroes, sans-serif, good contrast. But unfortunately, it's bitmap, so it doesn't work with KiTTY.
 
-Based on the [font FAQ for KiTTY](https://sw.kovidgoyal.net/kitty/faq/#kitty-is-not-able-to-use-my-favorite-font), it's not that Roboto Mono is bitmap. It's that the Powerline version, at a minimum, doesn't have consistent spacing calculations; adding the override file fixes it.
+Based on the [font FAQ for KiTTY](https://sw.kovidgoyal.net/kitty/faq/#kitty-is-not-able-to-use-my-favorite-font), it's not that Roboto Mono is bitmap. It's that it doesn't have consistent spacing calculations; adding the override file fixes it.
 
 Instead of Powerline-only fonts, the Nerd Fonts Symbols Only Font is probably the best solution. In addition, since font packages aren't in most repos, they should be included in the dotfiles repo.
+- [fonts](https://github.com/shawngmc/dotfiles/tree/main/.local/share/fonts)
+- [overrides](https://github.com/shawngmc/dotfiles/blob/main/.config/fontconfig/fonts.conf)
+
+These are set in the dotfiles to be used in:
+- [kitty](https://github.com/shawngmc/dotfiles/blob/main/.config/kitty/kitty.conf)
+- [VS Code](https://github.com/shawngmc/dotfiles/blob/main/.config/Code/User/settings.json)
 
 # Terminal - Guake
 1. Install Guake

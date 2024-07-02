@@ -1,7 +1,14 @@
 # new-workstation-setup-guide
 
 # Font - Roboto Mono for Powerline and Fira Code Medium
-Using the [CodingFont Tournament Bracket](https://www.codingfont.com/), I found I like Roboto Mono: More readable, slashed zeroes, sans-serif, good contrast. But unfortunately, that's not Bitmap, so it doesn't work with KiTTY. Add Fira Code for it.
+Using the [CodingFont Tournament Bracket](https://www.codingfont.com/), I found I like Roboto Mono: More readable, slashed zeroes, sans-serif, good contrast. But unfortunately, it's bitmap, so it doesn't work with KiTTY. Add Fira Code for it?
+
+Based on the [font FAQ for KiTTY](https://sw.kovidgoyal.net/kitty/faq/#kitty-is-not-able-to-use-my-favorite-font), it's not that Roboto Mono is bitmap. It's that the Powerline version, at a minimum, doesn't have consistent spacing calculations; adding the override file fixes it.
+
+Instead of Powerline-only fonts, the Nerd Fonts Symbols Only Font is probably the best solution. In addition, since font packages aren't great in repos, they should be included in the dotfiles.
+
+
+
 1. Install the powerline fonts shim, which alone makes powerline always render properly
     - Fedora 40/EL8/EL9: ```sudo dnf install powerline-fonts fira-code-fonts -y```
     - Debian/Ubuntu/etc.: ```sudo apt-get install fonts-powerline fonts-firacode -y```
